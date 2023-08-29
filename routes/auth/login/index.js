@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const { SECRET } = require("../../../config");
-const { getPopulatedData } = require("../../../helpers");
+const { findAndPopulate } = require("../../../helpers");
 const Joi = require("joi");
 
 const schema = Joi.object({
@@ -13,7 +13,7 @@ const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
     const validate = await schema.validateAsync(req.body);
-    const populatedUser = await getPopulatedData(
+    const populatedUser = await findAndPopulate(
       "user",
       { email },
       "type",

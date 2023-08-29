@@ -39,7 +39,7 @@ const signUpUser = async (req, res) => {
         username: user.first_name,
         location: "test",
       },
-      "Health Titan Pro",
+      "Bettics",
       "Awaiting Admin Approval",
       user.email
     );
